@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Scramble</title>
+</head>
+<body>
+    <h1>A Javascript Word Scramble Game</h1>
+
+    <script>
+        var WORDS     = ["booger", "apple", "hackbright", "mango", "water", "computer", "pizza", "watermelon"];
+        var SCRAMBLED = ["oogreb", "papel", "backrhight", "goman", "ewrta", "ucorpmte", "zaizp", "rlmoewtaen"];
+
+        var scramble_word = function(word) {
+            var scrambled = [];
+            for (var i = 0; i < word.length; i++) {
+                index = Math.floor(Math.random()*(word.length));
+                var letter = word.slice(word[index]);
+                scrambled.push(letter);
+            }
+            console.log(scrambled)
+
+        }
+
+
+
+        var playing = true;
+
+
+        while (playing) {
+
+            // Grab a random word from the WORDS array.
+            var index = Math.floor(Math.random()*(8));
+
+            // Grab the corresponding scrambled word from the SCRAMBLED array.
+            var random_word = WORDS[index];
+            var scrambled_word = SCRAMBLED[index];
+
+            // Prompt the user to guess the original word when given the scrambled word.
+            var ask_user = alert("Here is a scrambled word: " + scrambled_word + ". " + "Can you guess the original word?");
+
+            var user_guess = prompt(" What's your guess?", scrambled_word);
+
+            // If the user guesses wrong, tell them they were wrong and show the right word.
+            if (user_guess.toLowerCase().trim() == random_word) {
+                alert("Yay you guessed it!");
+            }
+            else {
+                alert("You guessed wrong! The word is: "+random_word);
+
+            }
+
+        
+            
+            // If the user guesses the correct word, congratulate them.
+
+            playing = confirm("Press OK To keep playing or Cancel to quit");
+
+            // What does confirm() return?
+            // What does setting the playing variable do?
+        }
+
+        alert("goodbye!");
+    </script>
+    
+</body>
+</html>
